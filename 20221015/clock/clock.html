@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="clock1">
+        <span class="ck">
+          <span id="ck1" class="c1"></span>
+          <span id="ck2" class="c2"></span>
+        </span>
+        <span class="cc"></span>
+        <span class="ck">
+          <span id="ck3" class="c3"></span>
+          <span id="ck4" class="c4"></span>
+        </span>
+        <span class="cc"></span>
+        <span class="ck">
+          <span id="ck5" class="c5"></span>
+          <span id="ck6" class="c6"></span>
+        </span>
+        <button onclick="todo(this)" id="doWhat">PAUSE</button>
+      </div>
+
+      <div id="clock2">
+        <p id="clk2-time">12:00:00</p>
+        <p id="clk2-date">2019-12-06 MON</p>
+      </div>
+        
+
+      <script>
+        let keepNum = null;
+        function nowTime() {
+          //setTimeout(nowTime, 1000);  //讀一秒後執行FN
+          const now = new Date();
+          //console.log(now);
+          const 
+          nHour = now.getHours(),
+          nMin = now.getMinutes(),
+          nSec = now.getSeconds();
+          timeAry=[];
+
+          timeAry.push('c'+ Math.floor(nHour/10));
+          timeAry.push('c'+ nHour%10);
+          timeAry.push('c'+ Math.floor(nMin/10));
+          timeAry.push('c'+ nMin%10);
+          timeAry.push('c'+ Math.floor(nSec/10));
+          timeAry.push('c'+ nSec%10);
+
+          //console.log(nHour,nMin,nSec);
+
+          document.getElementById('ck1').className=timeAry[0];
+          document.getElementById('ck2').className=timeAry[1];
+          document.getElementById('ck3').className=timeAry[2];
+          document.getElementById('ck4').className=timeAry[3];
+          document.getElementById('ck5').className=timeAry[4];
+          document.getElementById('ck6').className=timeAry[5];
+
+          //關掉冒號
+          document.querySelectorAll('.cc').forEach(function(item){
+            item.style.opacity = 1;
+          });
+
+          setTimeout(function () {
+            document.querySelectorAll('.cc').foreach(function(item){
+              item.style.opacity = 0;
+            })
+          }, 500);
+        }
+
+        nowTime();
+        //var num = setInterval(nowTime, 1000);
+        //console.log('run');
+
+        function todo(who){        
+          //console.log('loki');
+          if(who.textContent == 'PLAY'){
+            who.textContent == 'PAUSE';
+            keepNum = setInterval(nowTime, 1000);
+            
+          }else{
+            who.textContent == 'PLAY';
+            clearInterval(keepNum);
+          }
+        }
+        //執行todo 
+        todo(document.getElementById('doWhat'));
+      
+      let dayStr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        function chkZero(num){
+          if (num < 10) {
+            num = '0' + num;
+            return num;
+          }
+        }
+
+      let nowTime2  = function() {
+        const now = new Date();
+
+        // const 
+        // nHour = now.getHours(),
+        // nMin = now.getMinutes(),
+        // nSec = now.getSeconds(),
+        // nYear = now.getFullYear(),
+        // nMon = now.getMonth() + 1,
+        // nDate = now.getDate(),
+        // nDay = now.getDay();
+
+        // console.log(nHour, nMin, nSec, nYear, nMon, nDate, nDay, dayStr[nDay]);
+
+        // document.getElementById('clk2-time').textContent=`${chkZero(nHour)}:${chkZero(nMin)}:${chkZero(nSec)}`;
+        // document.getElementById('clk2-date').textContent=`${nYear}-${chkZero(nMon)}-${chkZero(nDate)}-${dayStr[nDay]}`;
+
+        //使用obj 寫法
+        const nowObj ={
+        nHour: chkZero(now.getHours()),
+        nMin: chkZero(now.getMinutes()),
+        nSec: chkZero(now.getSeconds()),
+        nYear: now.getFullYear(),
+        nMon: chkZero(now.getMonth() + 1),
+        nDate: chkZero(now.getDate()),
+        nDay: dayStr[now.getDay()]
+        }
+
+        document.getElementById('clk2-time').textContent=`${nowObj.nHour}:${nowObj.nMin}:${nowObj.nSec}`;
+        document.getElementById('clk2-date').textContent=`${nowObj.nYear}-${nowObj.nMon}-${nowObj.nDate}-${nowObj.nDay}`;
+
+        nowTime2();
+        setInterval(nowTime2, 1000);
+
+      }
+
+      </script>
+</body>
+</html>

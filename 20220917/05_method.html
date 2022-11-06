@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //let a = '5', b = 100;
+
+        // a = Math.round(6.4);
+        // console.log(a);
+
+        // b= Math.ceil(6.3)
+        // console.log(b);
+
+        // c = Math.floor(6.8);
+        // console.log(c);
+
+        // d = Math.random()
+        // console.log(d);
+
+
+        //產生 1 ~ 10 之隨機數
+        /*
+        0~0.999 * 10
+        0~ 9.999 +1
+        1~10
+        */
+
+        // const step1  = (Math.random()*10) + 1;
+        // const step2 = (Math.floor(step1));
+        // console.log(step2);
+
+        
+        // for(let i = 0; i < 100; i++){
+        //     console.log(Math.floor(Math.random() *10 + 1));
+        // }
+        // method 1
+        // const ary1to10 =[]
+        // for(let i = 0; i < 50; i++){
+        //     ary1to10.push(Math.floor(Math.random() *10 + 1));
+        //     console.log(ary1to10);
+        // }
+
+
+        // method 1
+        // const ary1to10 =[]
+        // for(let i = 0; i < 5; i++){
+        //     const nowGet = Math.floor(Math.random() *10 + 1);
+        //     if(ary1to10.includes(nowGet)){
+        //         i--;
+        //     }
+        //     else{
+        //         ary1to10.push(nowGet);
+        //     }
+        //     // ary1to10.push(Math.floor(Math.random() *10 + 1));
+        //     //console.log(ary1to10);
+        // }
+        // console.log(ary1to10);
+
+        //輸出 31-55的數字
+        // const ary1to10 =[]
+        // for(let i = 0; i < 20; i++){
+        //     const nowGet = Math.floor(Math.random() *25 + 31);
+        //     if(ary1to10.includes(nowGet)){
+        //         i--;
+        //     }
+        //     else{
+        //         ary1to10.push(nowGet);
+        //     }
+        //     // ary1to10.push(Math.floor(Math.random() *10 + 1));
+        //     //console.log(ary1to10);
+        // }
+        // console.log(ary1to10);
+
+        //console.log(Math.floor(Math.random() *18 + 2));
+
+        // function rand(min, max) {
+        //     return Math.floor(Math.random() * (max - min + 1)) + min;
+        // }
+
+
+        // console.log(rand(16,32));
+        
+        let min, max;
+
+        function rand(fst, sec = null) {
+            if(sec == null){
+                min = 1, max = fst;
+            }else{
+                min = fst, max = sec;
+            }
+            return Math.floor(Math.random() * (max - min + 1 )) + min;
+        }
+    </script>
+</body>
+</html>

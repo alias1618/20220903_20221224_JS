@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+
+    <style>
+        .box{
+            width: 100px;
+            height:100px;
+            background: lightcoral;
+        }
+        .box.green{
+            background: lightgreen;
+        }
+        .dn{
+            display: none;
+        }
+        .mainZone{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">toggleClass</button>
+    <button class="btn">hide</button>
+    <button class="btn">show</button>
+    <button class="btn">toggle Effect</button>
+    <button class="btn">fade out</button>
+    <button class="btn">fade in</button>
+    <button class="btn">fade toggle</button>
+    <button class="btn">fade to</button>
+    <hr>
+    <div class="box"></div>
+
+    <script>
+        const allBtn = $('.btn');
+        const box = $('.box');
+
+        allBtn.eq(0).click(function(){
+            box.toggleClass('dn');
+        });
+
+        allBtn.eq(1).click(function () {
+            //box.hide(10000);
+            //box.show();
+            //box.toggle();
+            box.hide('fast', function(){
+                console.log('hide done');
+            })
+        })
+        allBtn.eq(2).click(function () {
+            //box.hide();
+            box.show(1000);
+            //box.toggle();
+        })
+        allBtn.eq(3).click(function () {
+            box.toggle('fast',function(){
+
+            })
+        })
+        allBtn.eq(3).click(function () {
+            box.toggle('fast',function(){
+
+            })
+        })
+        allBtn.eq(3).click(function () {
+            box.toggle('fast',function(){
+
+            })
+        })
+    </script>
+</body>
+</html>

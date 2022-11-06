@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /////////////////////////////////////////規劃陣列素材----start
+        ary=[];
+        for (let i = 0; i < 10; i++){
+            ary.push(i*100);
+            
+        }
+        console.log(ary);
+        ary.shift();
+        
+        /////////////////////////////////////規劃陣列素材----end
+
+        ///////////////////////////////////////////////////
+
+        // for(let i=0; i<ary.length; i++){
+        //     console.log(ary[i]);
+        // }
+
+        ///////////////////////////////////////////////////
+        //
+        //same as prev : method 2
+        //ary.forEach('放入匿名函式');
+        // function showIt(val,idx) {  //指定兩個參數為value與index
+        //     console.log(`value=${idx}, value${val}`);
+        // }
+        // ary.forEach(showIt);
+
+        //same as prev : method 3
+        // ary.forEach(function(val,idx){
+        //     console.log(`index=${idx}, value${val}`);
+        // })
+
+        //same as prev : method 4
+        // ary.forEach((val) => {
+        //     console.log(`value${val}`);
+        // })
+
+        //same as prev : method 5
+        //ary.forEach(val => console.log(`value${val}`));
+
+
+        //use-of(ES6) : method 6
+        //for (const iterator of array)
+        // for (const val of ary) {
+        //     console.log(`value=${val}`);
+        // }
+
+
+
+        //////////////////////////////filter 過濾//////////////////////////////////////
+        //method 1
+        // function limited500(val){
+        //     if (val < 500) return true;
+        // }
+
+        // const newAry = ary.filter(limited500); //根據你每次的T/F收集起來整理成新Array
+
+        // 顯示(4) [100, 200, 300, 400]
+
+        //method 2 
+        // const newAry = ary.filter((val) =>{
+        //     //if (val < 500) return true;
+        //     //if (true) return true;
+        //     return (val < 500);
+
+        // }
+
+
+        //method 3
+        console.log(ary.filter(e => e < 500));
+
+        //bouns 只想拿 idx=0,3,6,....
+        ary.filter((e), i =>{
+            return (i % 3 ==0)
+        });
+
+        // 非常簡短的方式  可學，可不學
+        console.log(ary.filter((e), i => !(i % 3)););
+        //ary.filter((e), i => !(i % 3));
+    </script>
+</body>
+</html>

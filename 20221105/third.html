@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <style>
+        .hot{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+        .fw{
+            font-size: 2rem;
+            font-weight: bolds;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <h1 id="header">MyjQueryDemo List</h1>
+        <h2>我的代辦事項</h2>
+        <ul>
+        <li id="one" class="hot"><b>買</b> 晚餐</li>
+        <li id="two" class="hot">練程式</li>
+        <li id="three" class="hot">打電動</li>
+        <li id="four">記得去洗澡</li>
+        </ul>
+        <input type="button" value="BUTTON">
+        <input type="text" value="INPUT TEXT">
+        <input type="email" value="">
+    </div>
+    <script>
+        function say() {
+            console.log('hello');
+        }
+        console.log($('#three'));
+
+        // //JQ: 當文件準備好 => 做某件事
+        // $(document).ready(function(){
+        //     console.log($('#three'));
+        // })
+
+        // //JS: 當網頁的event事件:載入完畢 => 做某件事
+        // window.onload=function() {
+        //     console.log($('#three'));
+        // }
+
+        // //同上的邏輯寫成JQ event事件
+        // $(window).on('load', function() {
+        //     console.log($('#three'));
+        // })
+
+        // document.querySelector('h1').onclick = function() {
+        //     console.log('h1');
+        // }
+
+        // $('h1').on('click', function() {
+        //     console.log('h1');
+        // })
+
+        //$('h1').on('click', say);
+
+        $('h1').hover(say);
+
+        $('h1').hover(function(){
+            console.log(this.textContent);
+        })
+
+        $(document).resize(function(){
+            console.log('A');
+        })
+    </script>
+</body>
+</html>

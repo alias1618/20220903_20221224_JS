@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let str = Date();
+        // let timeObj = new Date();
+
+        //console.log(str);
+        //顯示 "Sat Sep 17 2022 13:56:10 GMT+0800 (台北標準時間)"
+
+        //console.log(timeObj);
+        //"Sat Sep 17 2022 13:56:38 GMT+0800 (台北標準時間)"
+
+
+        //let custom1 = new Date(2022,11,31,23,59,59,999);
+        //console.log(custom1);
+        //"顯示Sat Dec 31 2022 23:59:59 GMT+0800 (台北標準時間)"
+
+        //let custom2 = new Date('2022-12-31T23:59:59');
+        //console.log(custom2);
+
+        // let nowTime = new Date();
+        // console.log(nowTime.getFullYear());
+        // //顯示"2022"
+
+        // console.log(nowTime.getMonth());
+        // //顯示"8"
+
+        // console.log(nowTime.getDate());
+        // //顯示"17"
+
+        // console.log(nowTime.getHours());
+        // //顯示"14"
+
+        // console.log(nowTime.getMinutes());
+        // //顯示"10"
+
+        // console.log(nowTime.getSeconds());
+        // //顯示"22"
+
+        // console.log(nowTime.getDay());
+        // //顯示"6"
+
+        // console.log(nowTime.getTime());
+        // //顯示 "1663395164395"
+
+        // let nowTime = new Date();
+
+        // let endYear = new Date (2022,11,31,23,59,59,999);
+
+        // let tMin = nowTime.getTime();
+        // let tMax = endYear.getTime();
+
+        // console.log(tMin, tMax);
+
+        // let beto = tMax - tMin;
+
+        // let beAllsec = Math.floor(beto / 1000) ; //總秒數
+
+        // const beSec = beAllsec%60;  //餘數 by 秒
+
+        // const beAllMin = Math.floor(beAllsec/60)  //總 分鐘
+
+        // const beMin = beAllMin%60;  // 餘數 by 分
+
+        // const beAllHur = Math.floor(beAllMin/60); //總 hours
+
+        // const beHur = beAllHur %24 ;
+
+        // const beAllDay = Math.floor(beAllHur/24); //總 days
+
+        
+        // console.log(`距離跨年還剩下${beAllDay}天${beHur}時${beMin}分${beSec}秒`);
+
+
+
+        //////////////////////////////////////////修改時間物件，先需得知目前時間，再進行加或減 存入
+
+        const now = new Date();
+        console.log(`目前時間${now}`);
+
+        now.setHours(now.getHours() + 3);
+        //now.setDate(now.getDate() + 105);
+        console.log(`調整時間${now}`);
+
+
+    </script>
+</body>
+</html>

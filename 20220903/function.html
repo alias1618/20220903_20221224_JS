@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sayHi(){
+            console.log('Hello World');
+        }
+
+        sayHi();
+
+        function sayHi_2(name){
+            console.log('Hello World , I am '+name+' !!');
+        }
+        
+        sayHi_2('Loki');
+        sayHi_2('Daniel');
+
+
+        //es6 才有預設值
+        function sayHi_3(name='Seri'){
+            console.log('Hello World , I am '+name+' !!');
+        }
+        sayHi_3();
+
+
+        //匿名函式  指定給 變數 sayname
+        sayName=function(name){
+            console.log(`Hi, ${name}`);
+        }
+
+        sayName('Loki Jiang');
+
+        //箭頭函式 ES6 語法糖
+        var saywho=(name) => {
+            console.log('Hello ' + name);
+        }
+        saywho('july')
+
+        // return
+        function show(name) {
+            var request = 'hi, nice to meet you ' + name;
+            //console.log(request);
+            return request
+        }
+
+        var ans = show('Loki');
+        console.log(ans);
+        console.warn(ans);
+        console.error(ans);
+        console.log(show('loki'));
+
+        var sayHello=function() {
+            console.log('Nice to meet you, bro');
+        }
+
+        sayHello();
+
+        //開根號乘以10
+        var examCount = function(num){
+            var finalCount=Math.sqrt(num)*10;
+            return finalCount;
+        }
+
+        console.log(examCount(100));
+        
+        typeof(examCount);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>for.html</h1>
+    <script>
+        // //for(初始動作; 進入條件;結束動作)
+        // let str = '';
+        // for (let i = 0; i < 9; i++) {
+        //     str += i;
+
+        // }
+
+        // console.log(str);
+
+        // //use for print 1,4,7,10
+
+        // let num='';
+        // for (let a = 1; a < 11; a += 3) {
+        //     //console.log(a);
+        //     num += a + ', ';
+        // }
+        // console.log(num);
+
+        //99乘法表
+        let num = '',total_num='';
+        for (let a = 1; a < 10; a++) {
+            for (let b = 1; b < 10; b++) {
+                //num = a*b;
+                total_num = `${a} * ${b} = ${a * b},`;
+                console.log(total_num);
+            }
+            console.log('----');
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="onclink demo" onclick="sayHello('hello Loki')">
+    <button type="button" value="onclink demo" onclick="sayHello('hello Loki')">DEMO</button>
+    <div style="border:1px solid red" onclick="sayHello('Work in DIV')">DEMO on DIV</div>
+    <hr>
+    <input type="button" value="on ~ click(Bad)" onclick="whatIsBad('a1')" id="a1">
+    <input type="button" value="on ~ click" onclick="whatIs(this)">
+    <input type="button" value="on ~ mousedown" onmousedown="whatIs(this)">
+    <input type="button" value="on ~ mouseup" onmouseup="whatIs(this)">
+    <input type="button" value="on ~ mouseover" onmouseover="whatIs(this)">
+    <input type="button" value="on ~ mouseout" onmouseout="whatIs(this)">
+    <hr>
+    <!-- 當改變時 -->
+    <input type="text" value="on ~ change" onchange="whatIs(this)">
+    <!-- 當聚焦時 -->
+    <input type="text" value="on ~ focus" onfocus="whatIs(this)">
+    <!-- 當失焦時 -->
+    <input type="text" value="on ~ blur" onblur="whatIs(this)">
+    <hr>
+    <div id="fakeBtn" onclick=""></div>
+    <button id="remove1" onclick="fakeBrn.onclick=null">remove fakeBtn Event</button>
+    <hr>
+    <button id="ock">try click</button>
+    <script>
+        // function sayHello(words) {
+        //     //console.log("Hello World");
+        //     console.log(words);
+        // }
+
+        // function whatIsBad() {
+        //     //console.log('done');
+        //     document.getElementById(who).style = 'color:red';
+        // }
+        // function whatIs(e) {
+            //console.log(e);
+            //e.style = 'color:red';
+        //     if (e.style.color == 'red') {
+        //         e.style.color = null;
+        //     } else {
+        //         //e.style = 'color:red';
+        //         //e.style = 'font-size:2rem';
+        //         //後style會覆蓋前著
+
+        //         //第一種寫法
+        //         //e.style.color = 'red';
+        //         //e.style.fontSize = '2rem';
+
+        //         //第二種寫法
+        //         e.style = 'color:red;font-size:1.5rem';
+        //     }
+        //     console.log('你剛剛對 "' + e.value + '" 做event事件!!');
+
+        // }
+
+
+        const fakeBtn = document.getElementById('fakeBtn');
+            fakeBtn.style = `
+            background-color:lightgoldenrodyellow;
+            box-shadow: 3px 3px 1px rgba(193,193,193,0.5);
+            cursor:pointer;
+            display:inline;
+            padding:5px`;
+            fakeBtn.innerHTML = '假按鈕';
+            fakeBtn.onclick=function(){
+                console.log(123);
+                whatIs(this);
+            }
+
+            document.getElementById('remove1').onclick=()=>{
+                fakeBtn.onclick=null;
+            }
+            //////////////////////////////////////////////////////
+            // document.onclick=function(){
+            //     console.log('click on doc');
+            //     console.log(window.event);
+            // }
+
+            // document.onkeydown=function(){
+            //     // console.log(window.event);
+            //     event.preventDefault();
+            //     const fakeBtn = document.getElementById('fakeBtn');
+            //     fakeBtn.innerHTML=event.key.toUpperCase();
+            // }
+
+            // document.oncontextmenu=function(){
+            //     event.preventDefault();
+            //     alert('鎖右鍵');
+            // }
+
+    const btn = document.querySelector('#ock');
+    btn.addEventListener('click',function(){
+        console.log('click No.1 !!!');
+    }) 
+    btn.addEventListener('click',function(){
+        console.log('click No.2 !!!');
+    })        
+    btn.addEventListener('mouseover',function(){
+        console.log('hover');
+    })
+    function click1() {
+        console.log('click No.1!!!');
+    }     
+    function click2() {
+        console.log('click No.2!!!');
+    }
+    function remove2() {
+        btn.removeEventListener('click', click2);
+    }
+    </script>
+</body>
+
+</html>

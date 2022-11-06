@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.1.min.js"></script>
+    <style>
+        .red{
+            color: red;
+        }
+
+        li:first-child{
+            color: yellow;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="page">
+        <h1 id="header">MyjQueryDemo List</h1>
+        <h2>我的代辦事項</h2>
+        <ul>
+        <li id="one" class="hot"><b>買</b> 晚餐</li>
+        <li id="two" class="hot">練程式</li>
+        <li id="three" class="hot">打電動</li>
+        <li id="four">記得去洗澡</li>
+        </ul>
+        <input type="button" value="BUTTON">
+        <input type="text" value="INPUT TEXT">
+        <input type="email" value="">
+    </div>
+    <script>
+        $(window).ready(()=>{
+            $('#header').addClass('red');
+        });
+
+        // $('li').each(function(index,node){
+        //     console.log(index, nodeItem);
+        // });
+
+        $('#one').after('<li style="color:blue">買西瓜</li>');
+    </script>
+    </body>
+</html>
