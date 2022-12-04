@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'
+        integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=='
+        crossorigin='anonymous'></script>
+        <style>
+            table,td{
+                border: 1px solid;
+                border-collapse: collapse;
+            }
+        </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td width="30%">標題</td>
+            <td width="70%">內容</td>
+        </tr>
+    </table>
+    <div id="alt" style="
+        position: absolute; 
+        width: 700px; 
+        min-height: 100px; 
+        word-break:break-all; 
+        text-align:justify; 
+        background-color: rgb(255, 255, 204); 
+        top: 50px; 
+        left: 400px; 
+        z-index: 99; 
+        display: none; 
+        padding: 5px; 
+        border: 3px double rgb(255, 153, 0); 
+        background-position: initial initial; 
+        background-repeat: initial initial;
+      ">等待被傳入文字放在這裡
+    </div>
+    <script>
+        $.getJSON('../db.json', function(res){
+            todo(res.q2t11);
+        })
+
+        function todo(jsonData){
+            console.log(jsonData);
+            for (const key in jsonData) {
+                console.log(key);
+                $(`table`).append(`
+                <tr>
+                    <td width="30%">${key}</td>
+                    <td width="70%" class="sswww">${jsonData[key].substring(0,20)}...
+                        <span style="display : none">${jsonData[key]}</span>
+                    </td>
+                </tr>
+                `);
+            }
+            $('.sswww').mouseover(function(){
+                    console.log(this);
+                    const words=$(this).children('span').text();
+                    console.log($(this).offset().top);
+                    console.log($(this).offset().left);
+                    //$('#alt').text(words);
+                    //$('#alt').show();
+                    $('#alt').text(words).show();
+                    //$('#alt').hide();
+                    $(`#alt`).css({
+                        // top:    ($(this).offset().top + 50) + 'px',
+                        // left:  `${$(this).offset().left - 100}px`
+                        top:(event.pageY +30) + 'px',
+                        left: `${event.pageX}px`
+                    });
+            });
+            $('.sswww').mouseout(function(){
+                $('#alt').hide();
+            });
+        }
+
+    </script>
+    <!-- <div id="alt"
+        style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
+    </div> -->
+    <!-- <script>
+        $(".sswww").hover(
+            function () {
+                $("#alt").html("" + $(this).children(".all").html() + "").css({ "top": $(this).offset().top - 50 })
+                $("#alt").show()
+            }
+        )
+        $(".sswww").mouseout(
+            function () {
+                $("#alt").hide()
+            }
+        )
+    </script> -->
+
+</body>
+
+</html>

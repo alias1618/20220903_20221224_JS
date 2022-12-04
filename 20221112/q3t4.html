@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="q3t4.css" />
+    <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <!-- <script src="slick/slick.min.js"></script> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'
+        integrity='sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=='
+        crossorigin='anonymous'></script>
+    <!-- <script src="jquery-3.6.1.min.js"></script> -->
+    <script src="slick/slick.min.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <h1>預告片介紹</h1>
+        <div id="box">
+            <div id="ani_zone">
+                <img src="img/03A05.jpg">
+                <p>123</p>
+            </div>
+        </div>
+        <div class="control"></div>
+    </div>
+
+
+<script>
+    let num = 0, pause, imgList;
+    $.getJSON('../db.json', function (res) {
+        todo(res.q3t4);
+    })
+
+    function todo(obj) {
+        num = obj.effect;
+        imgList = obj.img;
+        //console.log(obj);
+        //初始化 小圖 list
+        for (const key in obj.img) {
+            // $('.control').append(`<div><img src=圖路徑 ="片名" class="min-img"></div>`)
+            $('.control').append(`<div><img src="${obj.img[key]}" alt="${key}" class="min-img"></div>`)
+        }
+
+        //替換預設的主圖 (物件的第一筆)
+        // console.log(Object.key(obj.img)[0]);
+        // console.log(Object.value(obj,img)[0]);
+        $('#ani_zone>img').attr('src', Object.values(obj.img)[0]);
+        $('#ani_zone>p').text(Object.keys(obj.img)[0]);
+
+        //將以初始化的小圖套入plugin
+        $('.control').slick({
+            infinite: true,
+            dots: true,
+            slidesToShow: 4,
+            slidesToScroll: 4
+
+        });
+
+        //規劃小凸的click event
+        $('.min-img').click(function () {
+            const
+                key = $(this).attr('alt'),
+                value = $(this).attr('src');
+            swap(key, value);
+            clearInterval(pause); //清掉目前的autoplay
+            autoplay(key); //重新跑autoplay
+        });
+
+    }
+
+    function swap(key, val) {
+        //console.log(key, value);
+        const effect = num;
+        switch (effect) {
+            case 1:
+                $('#ani_zone').fadeOut(function () {
+                    $(this).children('p').text(key);
+                    $(this).children('img').attr('src', val);
+                    $(this).fadeIn();
+                });
+                break;
+            case 2:
+                $('#ani_zone').slideUp(function () {
+                    $(this).children('p').text(key);
+                    $(this).children('img').attr('src', val);
+                    $(this).slideDown();
+                });
+                //console.log('特效2');
+                break;
+            case 3:
+                $('#ani_zone').hide('slow', function () {
+                    $(this).children('p').text(key);
+                    $(this).children('img').attr('src', val);
+                    $(this).show('slow');
+                });
+                //console.log('特效2');
+                break;
+            case 4:
+                $('#ani_zone').addClass('scale');
+                setTimeout(() => {
+                    $('#ani_zone').children('p').text(key);
+                    $('#ani_zone').children('img').attr('src', val);
+                    $('#ani_zone').removeClass('scale');
+                }, 500);
+                //console.log('特效2');
+                break;
+            case 5:
+                $('#ani_zone').addClass('opacity');
+                setTimeout(() => {
+                    $('#ani_zone').children('p').text(key);
+                    $('#ani_zone').children('img').attr('src', val);
+                    $('#ani_zone').removeClass('opacity');
+                }, 500);
+                break;
+            case 6:
+                $('#ani_zone').addClass('left');
+                setTimeout(() => {
+                    $('#ani_zone').children('p').text(key);
+                    $('#ani_zone').children('img').attr('src', val);
+                    $('#ani_zone').removeClass('left');
+                }, 500);
+                break;
+            case 7:
+                $('#ani_zone').animate({ left: '-100%' }, 5000);
+                $('#ani_zone').children('p').text(key);
+                $('#ani_zone').children('img').attr('src', val);
+                $(this).css('left', '100%');
+                $(this).animate({ left: '0' });
+                break;
+        }
+
+    }
+
+    function autoplay(nowMovieName) {
+        // 我需要知道nowMovie後面那個片名key跟圖片val
+
+        //1.從img物件去問出index值，從index+1就能知道後面的key
+        //2.找出next() index 的 key value 送給swap()
+        //3.送交swap()
+        //4.在找到下一個 重複執行2~4秒
+
+        let nowIndex = Object.keys(imgList).indexOf(nowMovieName);  //先知道目前movie的index值
+
+        pause = setInterval(() => {
+            nowIndex = (nowIndex + 1) % Object.keys(imgList).length;
+            const nextKey = Object.keys(imgList)[nowIndex];
+            const nextVal = imgList[nextKey];
+
+            swap(nextKey, nextVal);
+        }, 1000);
+
+        // const nowat = 0;
+        // pause = setInterval(() =>{
+
+        // }, 1000);
+    }
+</script>
+</body>
+</html>

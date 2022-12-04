@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <script>
+        // $.ajax({
+        //     type:'GET',
+        //     url:'https://jsonplaceholder.typicode.com/todos',
+        //     //success:todo,
+        //     success:function(response){
+        //         console.log(response);
+        //     },
+        //     dataType:'json'
+        // });
+
+        // $.ajax({
+        //     type:'GET',
+        //     url:'hello.html',
+        //     //success:todo,
+        //     success:function(response){
+        //         console.log(response);
+        //         $('body').append(response);
+        //     },
+        //     dataType:'html'
+        // })
+
+        // $.ajax({
+        //     type:'GET',
+        //     url:'https://jsonplaceholder.typicode.com/posts',
+        //     //success:todo,
+        //     success:function(response){
+        //         console.log(response);
+        //         $('body').append(response);
+        //     },
+        //     dataType:'html'
+        // })
+
+        $.post('https://jsonplaceholder.typicode.com/posts',
+        {
+            title:'foo',
+            body:'bar',
+            userId:1,  
+        },  function (re) {
+            console.log(re);
+        });
+
+
+        
+
+
+    </script>
+    
+</body>
+</html>
